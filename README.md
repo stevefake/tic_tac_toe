@@ -12,4 +12,5 @@ phase 1: started 1:30pm
 phase 2: started 1:00am
 phase 3: started 2:30am
 
-Rather than only placing X's on the board, change the program so that two human players take turns.
+
+At the beginning of the game, the first player (the X player) should be asked for his/her name. Then the second player (the O player) should be asked for his/her name.

@@ -8,6 +8,10 @@ class Application
 
   p board
 
+  p 'Player 1, what is your name?'
+  player_x = gets.chomp
+  p 'Player 2, what is your name?'
+  player_o = gets.chomp
   p 'What is your location? (A1 is the upper-left, A2 is the upper-middle, A3 is
   the upper-right, B1 is the middle-left, etc.)'
 
@@ -23,13 +27,13 @@ class Application
       elsif board[response] == 'X'
         p 'You have already moved there. Pick a new location.'
       elsif board[response] == 'O'
-        p 'Player O has already moved there. Pick a new location.'
+        p "#{player_o} has already moved there. Pick a new location."
       else
         board[response] = 'X'
         p board
         if board.values.include?(' ') == true
           # if board[response] == 'X'
-          p 'What is your next move, player O?'
+          p "What is your next move, #{player_o}?"
           loop do
             response = gets.chomp
             if valid_responses.include?(response) == false
@@ -37,12 +41,12 @@ class Application
             elsif board[response] == 'O'
               p 'You have already moved there. Pick a new location.'
             elsif board[response] == 'X'
-              p 'Player X has already moved there. Pick a new location.'
+              p "#{player_x} has already moved there. Pick a new location."
             else
               board[response] = 'O'
               p board
               if board.values.include?(' ') == true
-                p 'What is your next move, player X?'
+                p "What is your next move, #{player_x}?"
               end
               break
             end
