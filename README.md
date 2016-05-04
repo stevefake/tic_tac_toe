@@ -11,4 +11,4 @@ Phase 1 - 5
 phase 1: started 1:30pm
 phase 2: started 1:00am
 
-The game should automatically end when the board is full of X's.
+Your application should be refactored to utilize at least two classes written by you.

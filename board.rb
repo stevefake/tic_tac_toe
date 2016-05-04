@@ -8,4 +8,13 @@ class Board
     }
   end
 
+  def move(key)
+    { key => value }
+  end
+
+  def gameover
+    if board.values.include?(' ') == false
+    end
+  end
+
 end
