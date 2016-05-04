@@ -5,7 +5,6 @@ require_relative 'tic_tac_toe'
 require_relative 'board'
 
 class TicTacToeTest < Minitest::Test
-
   def board
     ::Board.new
   end
@@ -15,7 +14,7 @@ class TicTacToeTest < Minitest::Test
   end
 
   def test_board
-    assert_equal "", create_board
+    assert_equal '', create_board
   end
 
   def test_can_input_move
