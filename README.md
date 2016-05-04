@@ -1,7 +1,9 @@
 ##Tic Tac Toe
 
 #About
-
+This program allows you to play the game of tic tac toe from your command line.
+In your terminal, enter 'ruby application.rb' to play against another person (
+or yourself). To play against the computer, enter 'ruby tic_tac_toe.rb'.
 
 #Dev Notes
 Record the number of hours you put towards each of the phases, and email or
@@ -13,7 +15,8 @@ phase 2: started 1:00am
 phase 3: started 2:30am
 phase 4: started 3:30am
 phase 5: started 3:00pm
+phase 5: completed 3:15pm
+refactoring: started 3:20pm
+bonus phase: tbd
 
-Modify the game so that the human (X) plays against the computer (O). The
-computer can be dumb (e.g. just take the next available position), but it should
-be possible for the human to lose if the human makes even worse decisions.
+Make the computer player unbeatable.

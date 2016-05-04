@@ -5,9 +5,6 @@ require_relative 'board'
 class Application
 
   board = Board.new.create_board
-  # player_x_wins = Board::PLAYER_X_WIN_CONFIGS
-  # player_o_wins = Board.new.game_won_by_player_o
-  # player_x_wins[x].each do |x|
   x1 = Board::PLAYER_X_WIN_CONFIG_1
   x2 = Board::PLAYER_X_WIN_CONFIG_2
   x3 = Board::PLAYER_X_WIN_CONFIG_3
@@ -38,10 +35,8 @@ class Application
   valid_responses = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']
 
     loop do
-      # if board == x1
-      #   p "#{player_x} wins!"
 
-        if board.values.include?(' ') == true # && ((Board.new.game_won_by_player_x == false) && (Board.new.game_won_by_player_o == false))
+        if board.values.include?(' ') == true
         response = gets.chomp
           # Players.new.player_turn
           if valid_responses.include?(response) == false
