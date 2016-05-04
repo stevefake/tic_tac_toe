@@ -7,25 +7,6 @@ class Board
     }
   end
 
-  def move(key)
-    { key => value }
-  end
-
-  def gameover
-    if board.values.include?(' ') == false
-    end
-  end
-
-  # PLAYER_X_WIN_CONFIGS =
-  #    {'A1' => 'X', 'A2' => 'X', 'A3' => 'X'}
-  #    {'B1' => 'X', 'B2' => 'X', 'B3' => 'X'}
-  #    {'C1' => 'X', 'C2' => 'X', 'C3' => 'X'}
-  #    {'A1' => 'X', 'B1' => 'X', 'C1' => 'X'}
-  #    {'A2' => 'X', 'B2' => 'X', 'C2' => 'X'}
-  #    {'A3' => 'X', 'B3' => 'X', 'C3' => 'X'}
-  #    {'A1' => 'X', 'B2' => 'X', 'C3' => 'X'}
-  #    {'A3' => 'X', 'B2' => 'X', 'C1' => 'X'}
-  # end
   PLAYER_X_WIN_CONFIG_1 =
     { 'A1' => 'X', 'A2' => 'X', 'A3' => 'X',
       'B1' => ' ', 'B2' => ' ', 'B3' => ' ',
@@ -92,16 +73,4 @@ class Board
       'B1' => ' ', 'B2' => 'O', 'B3' => ' ',
       'C1' => 'O', 'C2' => ' ', 'C3' => ' ' }.freeze
 
-  # def game_won_by_player_o
-  #   if {'A1' => 'O', 'A2' => 'O', 'A3' => 'O'} ||
-  #      {'B1' => 'O', 'B2' => 'O', 'B3' => 'O'} ||
-  #      {'C1' => 'O', 'C2' => 'O', 'C3' => 'O'} ||
-  #      {'A1' => 'O', 'B1' => 'O', 'C1' => 'O'} ||
-  #      {'A2' => 'O', 'B2' => 'O', 'C2' => 'O'} ||
-  #      {'A3' => 'O', 'B3' => 'O', 'C3' => 'O'} ||
-  #      {'A1' => 'O', 'B2' => 'O', 'C3' => 'O'} ||
-  #      {'A3' => 'O', 'B2' => 'O', 'C1' => 'O'}
-  #     return true
-  #   end
-  # end
 end

@@ -14,16 +14,10 @@ class TicTacToeTest < Minitest::Test
   end
 
   def test_board
-    assert_equal '', create_board
+    assert_equal '', Board.new.create_board
   end
 
-  def test_can_input_move
-    skip
-    cell = Cell.new('x')
-    assert_equal 'X', cell.entry
-  end
-
-  def test_Board_class_exists
+  def test_board_class_exists
     assert Board
   end
 

@@ -3,7 +3,10 @@ require_relative 'board'
 # require_relative 'players'
 
 class Application
-  board = Board.new.create_board
+
+def play
+  board_obj = Board.new
+  board = board_obj.create_board
   x1 = Board::PLAYER_X_WIN_CONFIG_1
   x2 = Board::PLAYER_X_WIN_CONFIG_2
   x3 = Board::PLAYER_X_WIN_CONFIG_3
@@ -119,5 +122,6 @@ class Application
       p 'The game is over'
       break
   end
-  end
+end
+end
 end
