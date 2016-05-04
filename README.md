@@ -11,5 +11,4 @@ Phase 1 - 5
 phase 1: started 1:30pm
 phase 2: started 1:00am
 
-The computer should alert a player if they enter coordinates which are already
-occupied and then ask again.
+The game should automatically end when the board is full of X's.
