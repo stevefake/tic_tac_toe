@@ -9,5 +9,7 @@ message your instructor when you complete each phase.
 Phase 1 - 5
 
 phase 1: started 1:30pm
+phase 2: started 1:00am
 
-Your application should include and utilize at least one class written by you.
+The computer should alert a player if they enter coordinates which are already
+occupied and then ask again.
