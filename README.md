@@ -2,8 +2,7 @@
 
 ##About
 This program allows you to play the game of tic tac toe from your command line.
-In your terminal, enter 'ruby application.rb' to play against another person (
-or yourself). To play against the computer, enter 'ruby tic_tac_toe.rb'.
+In your terminal, enter 'ruby play_game.rb' to begin the game.
 
 ##Dev Notes
 Record the number of hours you put towards each of the phases, and email or
