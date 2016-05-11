@@ -13,18 +13,18 @@ class BoardTest < Minitest::Test
 
   def test_can_create_board
     h = {'A1' => " ", "A2"=>" ", "A3"=>" ", "B1"=>" ", "B2"=>" ", "B3"=>" ", "C1"=>" ", "C2"=>" ", "C3"=>" "}
-    board = Board.create
+    board = Board.new
     assert_equal h, board.board
   end
 
   def test_can_send_move_to_board
-    board = Board.create
+    board = Board.new
     response = 'A2'
     assert_equal 'X', board.send_move(response, 'X')
   end
 
   def test_board_state_can_track_if_moves_available
-    board = Board.create
+    board = Board.new
     board.send_move('A1', 'X')
     board.send_move('A2', 'X')
     board.send_move('A3', 'X')
@@ -40,7 +40,7 @@ class BoardTest < Minitest::Test
 
   def test_can_track_if_player_wins
     h = {'A1' => "X", "A2"=>"X", "A3"=>"X", "B1"=>" ", "B2"=>" ", "B3"=>" ", "C1"=>" ", "C2"=>" ", "C3"=>" "}
-    board = Board.create(h)
+    board = Board.new(h)
     player_x = 'Bob'
     assert_equal true, board.player_wins?
   end

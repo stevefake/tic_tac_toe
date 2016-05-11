@@ -6,74 +6,95 @@ require_relative 'board_render'
 
 class Application
   def initialize
-    @board_obj = Board.create
-    @player = Player.new
-    @opponent = Player.new
-    @computer_opponent = ComputerPlayer.new
+    @board_obj = Board.new
     @board_render = BoardRender.new
   end
 
-  def play
+  def verify_move(player)
+    loop do
+      move = player.player_turn
+      if @board_obj.move_unique?(move)
+        @board_obj.send_move(move, player.xo)
+        if @mode == 'computer' && player == @opponent
+          p 'HAL 9000 has moved here:'  # doesn't appear with use of 'clear'
+        end
+        @board_render.display_board(@board_obj.board)
+        break
+      elsif @board_obj.move_valid?(move) == false
+        p 'Not a valid location. Try again.'
+      else
+        p 'There is already a piece at that location. Try again.'
+      end
+    end
+  end
 
-    p 'Would you like to play with a friend, or against the computer? Enter \'a\' or \'b\'.'
-    if 'a' == gets.chomp
-      mode = 'human'
-    elsif 'b'
-      mode = 'computer'
+  def game_over?
+    game_is_draw? || winner?
+  end
+
+  def game_is_draw?
+    if @board_obj.moves_available? == false &&
+        @board_obj.player_wins? == false &&
+        @board_obj.opponent_wins? == false
+      p 'The game has ended in a draw.'
     else
-      p 'You have entered an invalid input.'
+      false
+    end
+  end
+
+  def winner?
+    if @board_obj.player_wins?
+      p "#{@player.name} wins!"
+      true
+    elsif @board_obj.opponent_wins?
+      p "#{@opponent.name} wins!"
+      true
+    else
+      false
+    end
+  end
+
+  def setup_game
+    # Intro
+    p 'Would you like to play with (a) a friend, or (b) against the computer? Enter \'A\' or \'B\'.'
+    loop do
+      prompt = gets.chomp.upcase
+      if 'A' == prompt
+        @mode = 'human'
+        @opponent = Player.new
+        break
+      elsif 'B' == prompt
+        @mode = 'computer'
+        @opponent = ComputerPlayer.new
+        break
+      else
+        p 'Please select (a) or (b).'
+      end
     end
 
     p 'Player 1, what is your name?'
-    @player.player_x_name
-    if mode == 'human'
+    @player = Player.new
+    @player.name(gets.chomp)
+    @player.xo('X')
+    if @mode == 'human'
       p 'Player 2, what is your name?'
-      @opponent.player_o_name
+      @opponent.name(gets.chomp)
+      @opponent.xo('O')
     end
-    @board_render.display_board
-    p "What is your move, #{@player.player_x}? (rows A1-C3)"
+  end
+
+
+  def play
+    setup_game
+    @board_render.display_board(@board_obj.board)
 
     # Game logic
     loop do
-      if @board_obj.moves_available?
-        # Player 1's turn
-        @player.player_turn
-        if @board_obj.player_wins?
-          @board_render.display_board
-          p "#{@player.player_x} wins!"
-          break
-        # Switch players
-        else
-          # Player 2's turn
-          if @board_obj.moves_available?
-            if mode == 'human'
-              @board_render.display_board
-              p "What is your move, #{@opponent.player_o}?"
-              @opponent.opponent_turn
-            else
-              @computer_opponent.opponent_turn
-            end
-          end
-          if @board_obj.opponent_wins?
-            @board_render.display_board
-            if mode == 'human'
-              p "#{@opponent.player_o} wins!"
-            else
-              p "#{@computer_opponent.computer_name} wins!"
-            end
-            break
-          else
-            if @board_obj.moves_available?
-              @board_render.display_board
-              p "What is your move, #{@player.player_x}?"
-            end
-          end
-        end
-      else
-        @board_render.display_board
-        p 'The game has ended in a draw.'
-        break
-      end
+      verify_move(@player)
+      exit if game_over?
+      # Switch players
+      verify_move(@opponent)
+      exit if game_over?
     end
   end
 end
